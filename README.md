@@ -84,6 +84,7 @@ char	*ft_strnstr(const char *haystack, const char *needle, size_t len)
 int	ft_atoi(const char *str)
 ```
 
+
 ### Functions with malloc
 Malloc allows a memory allocation at runtime, in a memory region called 'heap'. It is necessary to use free (freeing that memory) anytime malloc is used.
 
