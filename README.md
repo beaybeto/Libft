@@ -1,6 +1,8 @@
 # Libft
 The objective of this project is to create my own library that includes the most common functions used when programming in C#
 
+## Mandatory
+### Functions that do not use dynamic memory allocation (malloc):
   - **Memset**. Copies the character c (an *unsigned char*) to the first len characters of b.
 ```
 void *memset(void *b, int c, size_t len)
@@ -78,6 +80,72 @@ char	*ft_strnstr(const char *haystack, const char *needle, size_t len)
     - The minimum value of an int is : -2147483648
     - The maximum value is 2147483647
     - In case of overflow, the return value is not defined.
-  ```
+```
 int	ft_atoi(const char *str)
+```
+
+### Functions with malloc
+Malloc allows a memory allocation at runtime, in a memory region called 'heap'. It is necessary to use free (freeing that memory) anytime malloc is used.
+
+ - **Calloc**. It stores enough space for an array of *count* elements that are *size* bytes in length. THEREFORE THE MEMORY IT NEEDS IS COUNT * SIZE. 
+
+Each element is initialized to 0 (using memset or bzero).
+
+It returns a pointer to the allocated space, which can store any type of object, although it is convenient to cast it to char *.
+
+If an error occurs, a NULL pointer is returned.
+```
+void *calloc(size_t count, size_t size)
+```
+ - **Strdup**. Stores enough memory for a copy of a string (s1). It makes the copy and returns the pointer s1.
+
+If there is not enough memory, NULL is returned.
+```
+char	*ft_strdup(const char *s1)
+```
+ - **Substr**. Creates a substring from the string s, starting at start, and of length len. If memory fails it returns null.
+
+If start is > than the length of s, nothing is returned, only '\0', AND MEMORY MUST BE SAVED FOR THAT NULL ONLY.
+
+If len > than the length of s, MEMORY MUST BE SAVED IN MALLOC ONLY FOR STRLEN(S) - START + 1.
+```
+char	*ft_substr(char const *s, unsigned int start, size_t len)
+```
+- **Strtrim**. Eliminates the characters given by the string set, in the main string s1 from the beginning and from the end, until it finds a character not belonging to set.
+```
+char	*ft_strtrim(char const *s1, char const *set)
+```
+ - **Split**. Reserves an array of strings (pointer to pointer) resulting from separating the string 's' into substrings using the character 'c' as delimiter. The array ends with a NULL pointer
+```
+char	**ft_split(char const *s, char c)
+```
+ - **Itoa**. Converts an integer to a null-terminated string. Returns the pointer to the string.
+
+The minimum value of an int is : -2147483648, which would occupy 12 bytes (including the sign and null). THERE IS ALWAYS A SMALLER MINIMUM INT, THAN THE MAXIMUM, BECAUSE OF THE SIGN. THEREFORE, IT IS NECESSARY TO CAST WITH AN UNSIGNED INT.
+```
+char *ft_itoa(int n)
+```
+ - **Strmapi**. To each character of the string 's' apply the function 'f' giving as character the index of each character and the character itself. It generates a new string with the result of the successive use of 'f'
+```
+char	*ft_strmapi(char const *s, char (*f)(unsigned int, char))
+```
+ - **Striteri**. To each character of the string 's', it applies the function 'f' giving as parameters the index of each character within 's' and the address of the character itself, which can be
+character itself, which may be modified if necessary
+```
+void	ft_striteri(char *s, void (*f)(unsigned int, char*))
+```
+## Bonus
+The bonus part consists of working with linked lists.
+
+Linked lists are a collection of self-referenced structures called ***nodes***. Where each node has a stored data and also a ***reference to the next element***. The node is created with dynamic memory, and they allow to store and modify data at run time.
+
+Linked lists are similar to arrays, except that an element is accessed by a *pointer* instead of an *index*. Scrolling is done in one direction only, from the first to the last element.
+
+ Structure of linked lists:
+ ```
+typedef 	struct s_list
+{
+	void		*content;
+	struct s_list	*next;           	   —-> self-reference. Pointer to data type
+} 	t_list;	                                   —-> structure variables. It can be used to create new node type variables.
 ```
