@@ -14,6 +14,7 @@ To do the casting:
 char *ptr = (char *)b
 ```
 Due to the function is declared as void *, it must have return statement inside it.
+
   - **Memcpy**. Copies n bytes from the source memory (src) to the destination memory (dst). If both memories overlap, the behavior is undefined.
 ```
 void *memcpy(void *dst, const void *src, size_t n)
@@ -31,18 +32,20 @@ size_t	ft_strlcpy(char *dst, const char *src, size_t dstsize)
 ```
   - **Strlcat**. Appends src to the end of dst. Appends at most dstsize - strlen(dst) - 1.
 
-dstsize = length of the final string (must have enough space to be able to concatenate src and add the NUL slash). Guarantees NUL termination except if dstsize = 0, or strlen(dst) > dstsize. The function returns the length of the string you are trying to create, i.e. the sum of length dst + src
+dstsize = length of the final string (must have enough space to be able to concatenate src and add the NUL slash). Guarantees NUL termination except if dstsize = 0, or strlen(dst) > dstsize. 
+
+The function returns the length of the string you are trying to create, i.e. the sum of length dst + src
 ```
 size_t	ft_strlcat(char *dst, const char *src, size_t dstsize)
 ```
-  - **Strchr**. Locates the first occurrence of c (converted to char) in the string pointed to by s. C may be worth the NUL character, and the function would locate the termination of the string.
+  - **Strchr**. Locates the first occurrence of c (converted to *char*) in the string pointed to by s. C may be worth the NUL character, and the function would locate the termination of the string.
 
 Returns the pointer pointing to the located character, or NULL if c does not exist in the string.
 ```
 char	*ft_strchr(const char *s, int c)
 ```
-  - **Strrchr**. Locates the last occurrence of c (converted to char) in the string pointed to by s
-  - **Strncmp**. Compares n characters of strings (s1 and s2) lexicographically. The comparison is done using unsigned char. 
+  - **Strrchr**. Locates the last occurrence of c (converted to *char*) in the string pointed to by s
+  - **Strncmp**. Compares n characters of strings (s1 and s2) lexicographically. The comparison is done using *unsigned char*. 
 
 WHEN IT REACHES A NULL CHARACTER, IT STOPS, AND IF THE STRINGS WERE EQUAL, IT RETURNS ZERO.
 ```
@@ -51,13 +54,14 @@ int	ft_strncmp(const char *s1, const char *s2, size_t n)
   - **Memchr**. Locates a byte in the byte string. Locates the first occurrence of c (converted to *unsigned char*) in the string s.
 
 Returns the pointer to the occurrence, or NUL if it is not found in the selected n bytes.
+
 If the null value (\0) is passed as a character, it returns nothing. The same if you pass an empty string (and c = '\0').
 ```
 void	*ft_memchr(const void *s, int c, size_t n)
 ```
   - **Memcmp**. Compares n bytes of string s1 to string s2.
 
-The function returns zero if the strings are equal, otherwise it returns the difference between the two differing bytes (treated as unsigned char).
+The function returns zero if the strings are equal, otherwise it returns the difference between the two differing bytes (treated as *unsigned char*).
 Empty strings are considered identical.
 
 WHEN IT REACHES A NUL CHARACTER IT DOESN'T STOP, IT KEEPS CHECKING THE NEXT CHARACTERS UNTIL IT FINDS A DIFFERENCE AND GIVES IT TO YOU. That's the difference between this function and strncmp
@@ -122,7 +126,7 @@ char	**ft_split(char const *s, char c)
 ```
  - **Itoa**. Converts an integer to a null-terminated string. Returns the pointer to the string.
 
-The minimum value of an int is : -2147483648, which would occupy 12 bytes (including the sign and null). THERE IS ALWAYS A SMALLER MINIMUM INT, THAN THE MAXIMUM, BECAUSE OF THE SIGN. THEREFORE, IT IS NECESSARY TO CAST WITH AN UNSIGNED INT.
+The minimum value of an int is : -2147483648, which would occupy 12 bytes (including the sign and null). THERE IS ALWAYS A SMALLER MINIMUM INT, THAN THE MAXIMUM, BECAUSE OF THE SIGN. THEREFORE, IT IS NECESSARY TO CAST WITH AN *UNSIGNED INT*.
 ```
 char *ft_itoa(int n)
 ```
